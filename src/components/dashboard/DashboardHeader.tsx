@@ -30,10 +30,9 @@ export default function DashboardHeader() {
   return (
     <header className="lg:hidden sticky top-0 z-40 bg-[#050505] border-b border-white/[0.06] px-4 h-14 flex items-center justify-between">
       <Link href={`/${locale}`} className="flex items-center gap-2">
-        <div className="w-6 h-6 bg-white rounded-md flex items-center justify-center">
-          <span className="text-black font-bold text-[10px]">S</span>
-        </div>
-        <span className="text-white font-semibold text-sm tracking-tight">SMARTPATH AI</span>
+        <span className="text-white font-bold tracking-tight text-sm">
+          SMARTPATH<span className="text-white/40 font-light"> AI</span>
+        </span>
       </Link>
 
       <Sheet open={open} onOpenChange={setOpen}>

@@ -57,11 +57,8 @@ export default function DashboardSidebar() {
       {/* Logo */}
       <div className="p-5 border-b border-white/[0.06]">
         <Link href={`/${locale}`} className="flex items-center gap-2.5">
-          <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center shrink-0">
-            <span className="text-black font-bold text-xs">S</span>
-          </div>
-          <span className="text-white font-semibold tracking-tight text-sm">
-            SMARTPATH AI
+          <span className="text-white font-bold tracking-tight text-sm">
+            SMARTPATH<span className="text-white/40 font-light"> AI</span>
           </span>
         </Link>
       </div>

@@ -61,11 +61,8 @@ export default function LoginPage() {
       {/* Left brand panel */}
       <div className="hidden lg:flex lg:w-1/2 flex-col justify-between p-12 border-r border-white/[0.06]">
         <Link href={`/${locale}`} className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-            <span className="text-black font-bold text-sm">S</span>
-          </div>
-          <span className="text-white font-semibold tracking-tight text-lg">
-            SMARTPATH AI
+          <span className="text-white font-bold tracking-tight text-lg">
+            SMARTPATH<span className="text-white/40 font-light"> AI</span>
           </span>
         </Link>
 
@@ -100,10 +97,9 @@ export default function LoginPage() {
           {/* Mobile logo */}
           <div className="flex lg:hidden justify-center mb-8">
             <Link href={`/${locale}`} className="flex items-center gap-2">
-              <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center">
-                <span className="text-black font-bold text-xs">S</span>
-              </div>
-              <span className="text-white font-semibold tracking-tight">SMARTPATH AI</span>
+              <span className="text-white font-bold tracking-tight text-base">
+                SMARTPATH<span className="text-white/40 font-light"> AI</span>
+              </span>
             </Link>
           </div>
 
