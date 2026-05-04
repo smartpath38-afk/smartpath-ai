@@ -195,20 +195,34 @@ export default function GeneratePanel({ hasActivePlan, rendersUsed, rendersLimit
       </div>
 
       {/* Generate button */}
-      <button
-        onClick={handleGenerate}
-        disabled={!canGenerate}
-        className="w-full h-12 rounded-xl bg-white text-black font-semibold text-sm hover:bg-white/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-      >
-        {isGenerating ? (
-          <span className="flex items-center justify-center gap-2">
-            <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
-            Generating…
-          </span>
-        ) : (
-          "Generate Avatar"
+      <div className="space-y-2">
+        <button
+          onClick={handleGenerate}
+          disabled={!canGenerate}
+          className="w-full h-12 rounded-xl bg-white text-black font-semibold text-sm hover:bg-white/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+        >
+          {isGenerating ? (
+            <span className="flex items-center justify-center gap-2">
+              <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+              Generating…
+            </span>
+          ) : (
+            "Generate Avatar"
+          )}
+        </button>
+
+        {!hasActivePlan && (
+          <p className="text-center text-white/40 text-xs">
+            You need an active plan to generate avatars.{" "}
+            <a
+              href={`/${locale}/pricing`}
+              className="text-white/70 underline underline-offset-2 hover:text-white transition-colors"
+            >
+              View Plans
+            </a>
+          </p>
         )}
-      </button>
+      </div>
 
       {/* Result */}
       {renderState.status !== "idle" && (
