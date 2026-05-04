@@ -1,0 +1,201 @@
+{
+  "nav": {
+    "home": "Home",
+    "pricing": "Pricing",
+    "login": "Login",
+    "getStarted": "Get Started",
+    "dashboard": "Dashboard",
+    "logout": "Logout"
+  },
+  "hero": {
+    "badge": "AI-Powered Avatar Generation",
+    "title": "Transform Your Photo Into a Stunning AI Avatar",
+    "subtitle": "Professional-grade AI avatars in seconds. 8 unique styles. Built for creators, professionals, and brands.",
+    "cta": "Create Your Avatar",
+    "ctaSecondary": "See Examples"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Three steps to your perfect AI avatar.",
+    "step1Title": "Upload Your Photo",
+    "step1Desc": "Upload any clear portrait photo. JPG, PNG or WEBP up to 10MB.",
+    "step2Title": "Choose Your Style",
+    "step2Desc": "Pick from 8 professionally crafted AI styles — from Anime to Oil Painting.",
+    "step3Title": "Download Your Avatar",
+    "step3Desc": "Your avatar is ready in seconds. Download in full HD resolution."
+  },
+  "styles": {
+    "title": "8 Unique Styles",
+    "subtitle": "From hyper-realistic portraits to bold artistic interpretations.",
+    "cartoon3d": "Cartoon 3D",
+    "anime": "Anime",
+    "oilPainting": "Oil Painting",
+    "cyberpunk": "Cyberpunk",
+    "watercolor": "Watercolor",
+    "realisticPortrait": "Realistic Portrait",
+    "sketch": "Sketch",
+    "fantasy": "Fantasy"
+  },
+  "pricing": {
+    "title": "Choose Your License",
+    "subtitle": "Annual subscription. Cancel anytime. No hidden fees.",
+    "monthly": "/ mo equiv.",
+    "popular": "Most Popular",
+    "cta": "Get Started",
+    "duration": {
+      "6m": "6 Months",
+      "1y": "1 Year",
+      "2y": "2 Years",
+      "lifetime": "Max"
+    },
+    "plans": {
+      "essential": {
+        "name": "Starter",
+        "renders": "50 AI Generations per month",
+        "features": [
+          "50 AI renders per month",
+          "All 8 avatar styles",
+          "HD downloads",
+          "Personal gallery",
+          "Email support"
+        ]
+      },
+      "pro": {
+        "name": "Essential",
+        "renders": "150 AI Generations per month",
+        "features": [
+          "150 AI renders per month",
+          "All 8 avatar styles",
+          "HD downloads",
+          "Personal gallery",
+          "Email support"
+        ]
+      },
+      "business": {
+        "name": "Pro Studio",
+        "renders": "500 AI Generations per month",
+        "features": [
+          "500 AI renders per month",
+          "All 8 avatar styles",
+          "HD downloads",
+          "Personal gallery",
+          "Priority support",
+          "Commercial license"
+        ]
+      },
+      "infinity": {
+        "name": "Business",
+        "renders": "2,000 AI Generations per month",
+        "features": [
+          "2,000 AI renders per month",
+          "All 8 avatar styles",
+          "HD downloads",
+          "Personal gallery",
+          "Dedicated support",
+          "Commercial license",
+          "API access"
+        ]
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "What kind of photo should I upload?",
+    "a1": "A clear front-facing portrait works best. Good lighting and a plain background will give the best results.",
+    "q2": "How many avatars can I generate?",
+    "a2": "It depends on your license. Starter gives you 50 renders per month, Essential 150, Pro Studio 500, and Business 2,000.",
+    "q3": "Is my payment secure?",
+    "a3": "Yes. All payments are processed through secure, PCI-compliant payment gateways. We never store your card details.",
+    "q4": "Can I use my avatars commercially?",
+    "a4": "Pro Studio and Business licenses include commercial use rights.",
+    "q5": "What happens when I reach my monthly limit?",
+    "a5": "Your render counter resets every 30 days from your purchase date. You can upgrade your plan at any time."
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "rendersLeft": "Renders remaining",
+    "rendersOf": "of",
+    "resetIn": "Resets in",
+    "days": "days",
+    "uploadTitle": "Upload Your Photo",
+    "uploadSubtitle": "Drag & drop or click to browse",
+    "uploadHint": "JPG, PNG or WEBP — Max 10MB",
+    "selectStyle": "Choose Your Style",
+    "generateBtn": "Generate Avatar",
+    "generatingBtn": "Generating...",
+    "limitReached": "Monthly limit reached",
+    "gallery": "My Avatars",
+    "download": "Download",
+    "noAvatars": "No avatars yet. Generate your first one above!",
+    "plan": "Your Plan",
+    "billing": "Billing",
+    "settings": "Settings"
+  },
+  "checkout": {
+    "title": "Complete Your Purchase",
+    "heading": "Complete Your Order",
+    "orderSummary": "Order Summary",
+    "oneTime": "/ year",
+    "emailLabel": "Email address",
+    "emailHint": "Your login details and plan information will be sent to this address.",
+    "choosePayment": "Choose Payment Method",
+    "or": "or",
+    "debitCard": "Debit or Credit Card",
+    "secureEncrypted": "Secure · Encrypted",
+    "sslNote": "SSL secured. Your payment data is never stored.",
+    "securePayment": "Secure Payment",
+    "payWith": "Pay with",
+    "terms": "By completing your purchase you agree to our",
+    "termsLink": "Terms of Service",
+    "and": "and",
+    "privacyLink": "Privacy Policy",
+    "errorCancelled": "Payment was cancelled or failed. Please try again.",
+    "errorEmail": "Please enter a valid email address.",
+    "errorGeneric": "An error occurred.",
+    "refundLink": "Refund Policy",
+    "businessLine": "SMARTPATH AI LLC · Kalispell, MT, United States",
+    "durations": {
+      "6m": "6-Month Access",
+      "1y": "1-Year Plan",
+      "2y": "2-Year Access",
+      "lifetime": "Max Access"
+    }
+  },
+  "thankyou": {
+    "title": "Thank You for Your Purchase",
+    "message": "Your transaction has been successfully completed. We have sent an email to your address with all the necessary information.",
+    "cta": "Go to Dashboard"
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Sign in to your SMARTPATH AI account",
+    "registerTitle": "Create your account",
+    "registerSubtitle": "Start transforming your photos today",
+    "email": "Email address",
+    "password": "Password",
+    "fullName": "Full name",
+    "loginBtn": "Sign in",
+    "registerBtn": "Create account",
+    "googleBtn": "Continue with Google",
+    "orContinue": "or continue with",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "signIn": "Sign in",
+    "forgotPassword": "Forgot password?"
+  },
+  "legal": {
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "company": "SMARTPATH AI LLC",
+    "allRights": "All rights reserved."
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "uploadFailed": "Upload failed. Please try again.",
+    "generateFailed": "Generation failed. Please try again.",
+    "limitReached": "You have reached your monthly render limit.",
+    "noSubscription": "No active subscription found. Please purchase a plan.",
+    "nsfw": "This image was rejected by our content filter. Please upload a different photo."
+  }
+}

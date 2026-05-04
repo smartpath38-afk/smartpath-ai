@@ -1,0 +1,201 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "pricing": "Preise",
+    "login": "Anmelden",
+    "getStarted": "Jetzt starten",
+    "dashboard": "Dashboard",
+    "logout": "Abmelden"
+  },
+  "hero": {
+    "badge": "KI-gestützte Avatar-Generierung",
+    "title": "Verwandeln Sie Ihr Foto in einen atemberaubenden KI-Avatar",
+    "subtitle": "Professionelle KI-Avatare in Sekunden. 8 einzigartige Stile. Für Kreative, Profis und Marken.",
+    "cta": "Avatar erstellen",
+    "ctaSecondary": "Beispiele ansehen"
+  },
+  "howItWorks": {
+    "title": "So funktioniert es",
+    "subtitle": "Drei Schritte zu Ihrem perfekten KI-Avatar.",
+    "step1Title": "Foto hochladen",
+    "step1Desc": "Laden Sie ein klares Porträtfoto hoch. JPG, PNG oder WEBP bis 10 MB.",
+    "step2Title": "Stil wählen",
+    "step2Desc": "Wählen Sie aus 8 professionell gestalteten KI-Stilen — von Anime bis Ölgemälde.",
+    "step3Title": "Avatar herunterladen",
+    "step3Desc": "Ihr Avatar ist in Sekunden fertig. Download in voller HD-Auflösung."
+  },
+  "styles": {
+    "title": "8 einzigartige Stile",
+    "subtitle": "Von hyperrealistischen Porträts bis zu kühnen künstlerischen Interpretationen.",
+    "cartoon3d": "Cartoon 3D",
+    "anime": "Anime",
+    "oilPainting": "Ölgemälde",
+    "cyberpunk": "Cyberpunk",
+    "watercolor": "Aquarell",
+    "realisticPortrait": "Realistisches Porträt",
+    "sketch": "Skizze",
+    "fantasy": "Fantasy"
+  },
+  "pricing": {
+    "title": "Lizenz wählen",
+    "subtitle": "Jahresabonnement. Jederzeit kündbar. Keine versteckten Kosten.",
+    "monthly": "/ Mo. äquiv.",
+    "popular": "Beliebteste",
+    "cta": "Jetzt starten",
+    "duration": {
+      "6m": "6 Monate",
+      "1y": "1 Jahr",
+      "2y": "2 Jahre",
+      "lifetime": "Lebenslang"
+    },
+    "plans": {
+      "essential": {
+        "name": "Essential",
+        "renders": "150 KI-Generierungen pro Monat",
+        "features": [
+          "150 KI-Renders pro Monat",
+          "Alle 8 Avatar-Stile",
+          "HD-Downloads",
+          "Persönliche Galerie",
+          "E-Mail-Support"
+        ]
+      },
+      "pro": {
+        "name": "Pro Studio",
+        "renders": "450 KI-Generierungen pro Monat",
+        "features": [
+          "450 KI-Renders pro Monat",
+          "Alle 8 Avatar-Stile",
+          "HD-Downloads",
+          "Persönliche Galerie",
+          "Prioritäts-Support"
+        ]
+      },
+      "business": {
+        "name": "Business Elite",
+        "renders": "1.500 KI-Generierungen pro Monat",
+        "features": [
+          "1.500 KI-Renders pro Monat",
+          "Alle 8 Avatar-Stile",
+          "HD-Downloads",
+          "Persönliche Galerie",
+          "Prioritäts-Support",
+          "Kommerzielle Lizenz"
+        ]
+      },
+      "infinity": {
+        "name": "Max Plan",
+        "renders": "3.000 KI-Generierungen pro Monat",
+        "features": [
+          "3.000 KI-Renders pro Monat",
+          "Alle 8 Avatar-Stile",
+          "HD-Downloads",
+          "Persönliche Galerie",
+          "Dedizierter Support",
+          "Kommerzielle Lizenz",
+          "API-Zugang"
+        ]
+      }
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "q1": "Welches Foto sollte ich hochladen?",
+    "a1": "Ein klares Porträtfoto von vorne funktioniert am besten. Gute Beleuchtung und ein einfarbiger Hintergrund liefern die besten Ergebnisse.",
+    "q2": "Wie viele Avatare kann ich generieren?",
+    "a2": "Das hängt von Ihrer Lizenz ab. Essential bietet 150 Renders pro Monat, Pro Studio 450, Business Elite 1.500 und Max Plan 3.000.",
+    "q3": "Ist meine Zahlung sicher?",
+    "a3": "Ja. Alle Zahlungen werden über sichere, PCI-konforme Zahlungsgateways abgewickelt. Wir speichern Ihre Kartendaten niemals.",
+    "q4": "Kann ich meine Avatare kommerziell nutzen?",
+    "a4": "Business Elite und Max Plan Lizenzen beinhalten kommerzielle Nutzungsrechte.",
+    "q5": "Was passiert, wenn ich mein monatliches Limit erreiche?",
+    "a5": "Ihr Render-Zähler wird alle 30 Tage ab Ihrem Kaufdatum zurückgesetzt. Sie können Ihren Plan jederzeit upgraden."
+  },
+  "dashboard": {
+    "welcome": "Willkommen zurück",
+    "rendersLeft": "Verbleibende Renders",
+    "rendersOf": "von",
+    "resetIn": "Zurückgesetzt in",
+    "days": "Tagen",
+    "uploadTitle": "Foto hochladen",
+    "uploadSubtitle": "Ziehen & ablegen oder klicken",
+    "uploadHint": "JPG, PNG oder WEBP — Max. 10 MB",
+    "selectStyle": "Stil auswählen",
+    "generateBtn": "Avatar generieren",
+    "generatingBtn": "Wird generiert...",
+    "limitReached": "Monatliches Limit erreicht",
+    "gallery": "Meine Avatare",
+    "download": "Herunterladen",
+    "noAvatars": "Noch keine Avatare. Erstellen Sie oben Ihren ersten!",
+    "plan": "Ihr Plan",
+    "billing": "Abrechnung",
+    "settings": "Einstellungen"
+  },
+  "checkout": {
+    "title": "Kauf abschließen",
+    "heading": "Bestellung abschließen",
+    "orderSummary": "Bestellübersicht",
+    "oneTime": "/ Jahr",
+    "emailLabel": "E-Mail-Adresse",
+    "emailHint": "Ihre Zugangsdaten und die Details zu Ihrem Plan werden an diese Adresse gesendet.",
+    "choosePayment": "Zahlungsmethode wählen",
+    "or": "oder",
+    "debitCard": "Debit- oder Kreditkarte",
+    "secureEncrypted": "Sicher · Verschlüsselt",
+    "sslNote": "SSL-gesichert. Ihre Zahlungsdaten werden niemals gespeichert.",
+    "securePayment": "Sichere Zahlung",
+    "payWith": "Zahlen mit",
+    "terms": "Mit dem Abschluss Ihres Kaufs stimmen Sie unseren",
+    "termsLink": "Nutzungsbedingungen",
+    "and": "und der",
+    "privacyLink": "Datenschutzerklärung",
+    "errorCancelled": "Zahlung wurde abgebrochen oder ist fehlgeschlagen. Bitte erneut versuchen.",
+    "errorEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "errorGeneric": "Ein Fehler ist aufgetreten.",
+    "refundLink": "Rückerstattungsrichtlinie",
+    "businessLine": "SMARTPATH AI LLC · Kalispell, MT, USA",
+    "durations": {
+      "6m": "6 Monate Zugang",
+      "1y": "1-Jahres-Plan",
+      "2y": "2 Jahre Zugang",
+      "lifetime": "Lebenslanger Zugang"
+    }
+  },
+  "thankyou": {
+    "title": "Vielen Dank für Ihren Kauf",
+    "message": "Ihre Transaktion wurde erfolgreich abgeschlossen. Wir haben eine E-Mail mit allen notwendigen Informationen an Ihre Adresse gesendet.",
+    "cta": "Zum Dashboard"
+  },
+  "auth": {
+    "loginTitle": "Willkommen zurück",
+    "loginSubtitle": "Melden Sie sich bei Ihrem SMARTPATH AI-Konto an",
+    "registerTitle": "Konto erstellen",
+    "registerSubtitle": "Beginnen Sie noch heute mit der Transformation Ihrer Fotos",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "fullName": "Vollständiger Name",
+    "loginBtn": "Anmelden",
+    "registerBtn": "Konto erstellen",
+    "googleBtn": "Mit Google fortfahren",
+    "orContinue": "oder fortfahren mit",
+    "noAccount": "Noch kein Konto?",
+    "hasAccount": "Bereits ein Konto?",
+    "signUp": "Registrieren",
+    "signIn": "Anmelden",
+    "forgotPassword": "Passwort vergessen?"
+  },
+  "legal": {
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutzerklärung",
+    "company": "SMARTPATH AI LLC",
+    "allRights": "Alle Rechte vorbehalten."
+  },
+  "errors": {
+    "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "uploadFailed": "Upload fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "generateFailed": "Generierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "limitReached": "Sie haben Ihr monatliches Render-Limit erreicht.",
+    "noSubscription": "Kein aktives Abonnement gefunden. Bitte erwerben Sie einen Plan.",
+    "nsfw": "Dieses Bild wurde von unserem Inhaltsfilter abgelehnt. Bitte laden Sie ein anderes Foto hoch."
+  }
+}
