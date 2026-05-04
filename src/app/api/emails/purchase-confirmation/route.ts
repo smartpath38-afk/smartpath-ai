@@ -227,7 +227,7 @@ function buildEmailHtml({
           <tr>
             <td style="padding-top:32px;text-align:center;">
               <p style="margin:0;font-size:11px;color:rgba(255,255,255,0.15);">
-                SMARTPATH AI LLC · 30 N Gould St Ste R, Sheridan, WY 82801, USA · smartpathavatar.online
+                SMARTPATH AI LLC · 127 N Higgins Ave STE 307D #2673, Missoula, MT 59802, USA · smartpathavatar.online
               </p>
               <p style="margin:6px 0 0;font-size:11px;color:rgba(255,255,255,0.1);">
                 This is a transactional email — you cannot unsubscribe from purchase confirmations.

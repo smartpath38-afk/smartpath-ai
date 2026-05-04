@@ -23,8 +23,8 @@ export default function Footer({ locale }: FooterProps) {
             </div>
             <p className="text-white/25 text-xs leading-relaxed max-w-[260px]">
               SMARTPATH AI LLC<br />
-              1001 S. Main St. Ste 600<br />
-              Kalispell, MT 59901 — United States
+              127 N Higgins Ave STE 307D #2673<br />
+              Missoula, MT 59802 — United States
             </p>
             <a
               href="mailto:contact@smartpathavatar.online"
@@ -111,7 +111,7 @@ export default function Footer({ locale }: FooterProps) {
 
         {/* Bottom row — copyright */}
         <div className="flex items-center justify-center text-xs text-white/20">
-          <p>&copy; {year} SMARTPATH AI LLC. Kalispell, MT, United States. All rights reserved.</p>
+          <p>&copy; {year} SMARTPATH AI LLC. Missoula, MT, United States. All rights reserved.</p>
         </div>
 
       </div>

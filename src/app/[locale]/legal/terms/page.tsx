@@ -176,8 +176,8 @@ export default async function TermsPage({ params }: Props) {
               </p>
               <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 text-white/55 text-sm leading-relaxed space-y-0.5">
                 <p className="text-white/80 font-semibold">SMARTPATH AI LLC</p>
-                <p>1001 S. Main St. Ste 600</p>
-                <p>Kalispell, MT 59901</p>
+                <p>127 N Higgins Ave STE 307D #2673</p>
+                <p>Missoula, MT 59802</p>
                 <p>United States</p>
                 <p className="pt-2">
                   <a href="mailto:contact@smartpathavatar.online" className="text-white/70 hover:text-white underline transition-colors">

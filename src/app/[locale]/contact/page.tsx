@@ -57,8 +57,8 @@ export default async function ContactPage({ params }: Props) {
                 </p>
                 <p className="text-white/55 text-sm font-semibold">SMARTPATH AI LLC</p>
                 <p className="text-white/30 text-xs leading-relaxed">
-                  1001 S. Main St. Ste 600<br />
-                  Kalispell, MT 59901<br />
+                  127 N Higgins Ave STE 307D #2673<br />
+                  Missoula, MT 59802<br />
                   United States
                 </p>
               </div>

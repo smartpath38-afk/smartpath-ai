@@ -38,7 +38,7 @@ export default async function AboutPage({ params }: Props) {
               <p className="text-white/55 leading-relaxed">
                 <strong className="text-white/80">SMARTPATH AI LLC</strong> is a
                 technology company registered in the State of Montana, United States,
-                and headquartered at 1001 S. Main St. Ste 600, Kalispell, MT 59901.
+                and headquartered at 127 N Higgins Ave STE 307D #2673, Missoula, MT 59802.
                 We specialize in AI-driven digital identity and avatar solutions —
                 enabling creators, professionals, and brands to transform their photos
                 into professional-grade AI-generated portraits in seconds.
@@ -71,7 +71,7 @@ export default async function AboutPage({ params }: Props) {
                 <strong className="text-white/80">Fouad Hamdoune</strong>, an entrepreneur
                 and technologist focused on making professional-grade AI tools accessible
                 to creators, businesses, and independent professionals worldwide. Based in
-                Kalispell, Montana, Fouad built SMARTPATH AI to bridge the gap between
+                Missoula, Montana, Fouad built SMARTPATH AI to bridge the gap between
                 enterprise-level AI capabilities and everyday users.
               </p>
             </section>
@@ -142,8 +142,8 @@ export default async function AboutPage({ params }: Props) {
               <h2 className="text-lg font-semibold text-white">Company Details</h2>
               <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 text-white/55 text-sm leading-relaxed space-y-0.5">
                 <p className="text-white/80 font-semibold">SMARTPATH AI LLC</p>
-                <p>1001 S. Main St. Ste 600</p>
-                <p>Kalispell, MT 59901</p>
+                <p>127 N Higgins Ave STE 307D #2673</p>
+                <p>Missoula, MT 59802</p>
                 <p>United States</p>
                 <p className="pt-2">
                   <a
