@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { PRICING_PLANS, CHECKOUT_DESCRIPTIONS, type PlanName, type PlanDuration } from "@/types";
 import CheckoutClient from "./CheckoutClient";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -33,16 +35,22 @@ export default async function CheckoutPage({ params, searchParams }: Props) {
   const { data: { user } } = await supabase.auth.getUser();
 
   return (
-    <CheckoutClient
-      locale={locale}
-      planId={planName}
-      planDuration={planDuration}
-      planName={planDef.name}
-      monthlyRenderLimit={planDef.monthlyRenderLimit}
-      price={price}
-      description={description}
-      prefillEmail={user?.email ?? ""}
-      hasError={error === "1"}
-    />
+    <div className="flex flex-col min-h-screen bg-[#0f0f11]">
+      <Navbar />
+      <main className="flex-1">
+        <CheckoutClient
+          locale={locale}
+          planId={planName}
+          planDuration={planDuration}
+          planName={planDef.name}
+          monthlyRenderLimit={planDef.monthlyRenderLimit}
+          price={price}
+          description={description}
+          prefillEmail={user?.email ?? ""}
+          hasError={error === "1"}
+        />
+      </main>
+      <Footer locale={locale} />
+    </div>
   );
 }

@@ -120,7 +120,7 @@ export default function CheckoutClient({
   return (
     /* Full-screen container — scrollable on short/mobile viewports */
     <div className="min-h-screen bg-[#0f0f11] flex items-start sm:items-center justify-center
-                    py-8 sm:py-12 px-4">
+                    pt-24 pb-12 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
