@@ -208,34 +208,23 @@ export default function CheckoutClient({
             </div>
           </div>
 
-          {/* ── Payment method label ── */}
-          <p className="text-[10px] sm:text-[11px] font-medium text-white/40
-                        tracking-wider uppercase mb-3">
-            {t("choosePayment")}
-          </p>
-
-          {/* ════════════════════════════════════════
-              PayPal — official button PNG
-          ════════════════════════════════════════ */}
-          <button
-            onClick={handlePayPal}
-            disabled={loading !== null}
-            className={`
-              w-full h-[54px] sm:h-[58px] rounded-full
-              flex items-center justify-center
-              bg-[#FFC439] transition-all duration-200
-              ${loading === null
-                ? "hover:bg-[#FFB830] active:scale-[0.98] active:brightness-95 shadow-[0_4px_24px_rgba(255,196,57,0.30)] hover:shadow-[0_6px_32px_rgba(255,196,57,0.45)]"
-                : "opacity-50 cursor-not-allowed"
-              }
-            `}
-          >
-            {loading === "paypal" ? (
-              <Spinner color="#003087" />
-            ) : (
-              <PayPalButtonFace />
-            )}
-          </button>
+          {/* ── Payment — Coming Soon ── */}
+          <div className="w-full rounded-2xl border border-white/[0.08] bg-white/[0.02] px-5 py-6 text-center">
+            <div className="flex items-center justify-center mb-3">
+              <svg className="w-7 h-7 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <p className="text-white/70 font-semibold text-sm mb-1">Payment Processing Coming Soon</p>
+            <p className="text-white/30 text-xs leading-relaxed">
+              We&apos;re finalizing our payment system. To complete your purchase, please contact us directly at{" "}
+              <a href="mailto:contact@smartpathavatar.online"
+                className="text-white/50 underline underline-offset-2 hover:text-white/70 transition-colors">
+                contact@smartpathavatar.online
+              </a>
+            </p>
+          </div>
 
           {/* ── Refund Policy — trust signal near payment buttons ── */}
           <p className="text-center mt-4">
