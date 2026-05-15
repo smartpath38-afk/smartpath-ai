@@ -2,10 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { PRICING_PLANS, STRIPE_PRICE_IDS, type PlanName } from "@/types";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export async function POST(request: NextRequest) {
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  if (!stripeKey) {
+    return NextResponse.json({ error: "Stripe is not configured." }, { status: 500 });
+  }
+  const stripe = new Stripe(stripeKey);
+
   const body = await request.json();
   const { plan, email, locale } = body as {
     plan: PlanName;

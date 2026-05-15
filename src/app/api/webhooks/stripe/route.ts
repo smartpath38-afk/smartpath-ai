@@ -3,8 +3,6 @@ import Stripe from "stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { STRIPE_PRICE_IDS, type PlanName } from "@/types";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 const PRICE_TO_PLAN: Record<string, PlanName> = Object.fromEntries(
   (Object.entries(STRIPE_PRICE_IDS) as [PlanName, string][])
     .filter(([, v]) => v)
@@ -12,6 +10,13 @@ const PRICE_TO_PLAN: Record<string, PlanName> = Object.fromEntries(
 );
 
 export async function POST(request: NextRequest) {
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  if (!stripeKey || !webhookSecret) {
+    return NextResponse.json({ error: "Stripe is not configured." }, { status: 500 });
+  }
+  const stripe = new Stripe(stripeKey);
+
   const rawBody = await request.text();
   const sig = request.headers.get("stripe-signature");
 
@@ -21,7 +26,7 @@ export async function POST(request: NextRequest) {
 
   let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(rawBody, sig, process.env.STRIPE_WEBHOOK_SECRET!);
+    event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Webhook verification failed";
     console.warn("[webhook/stripe] Signature error:", msg);
