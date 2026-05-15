@@ -1,16 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { PRICING_PLANS, STRIPE_PRICE_IDS, type PlanName } from "@/types";
-
-const APP_URL =
-  process.env.NEXT_PUBLIC_APP_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+import { PRICING_PLANS, type PlanName } from "@/types";
 
 export async function POST(request: NextRequest) {
   const stripeKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeKey) {
     return NextResponse.json({ error: "Stripe is not configured." }, { status: 500 });
   }
+
+  const priceIds: Record<PlanName, string> = {
+    starter: process.env.STRIPE_PRICE_STARTER_MONTHLY ?? "",
+    pro:     process.env.STRIPE_PRICE_PRO_MONTHLY     ?? "",
+    enterprise: process.env.STRIPE_PRICE_ENTERPRISE_MONTHLY ?? "",
+  };
+
+  const rawAppUrl =
+    process.env.NEXT_PUBLIC_APP_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  const APP_URL = rawAppUrl.replace(/\/+$/, "");
+
   const stripe = new Stripe(stripeKey);
 
   const body = await request.json();
@@ -29,10 +37,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid plan." }, { status: 400 });
   }
 
-  const priceId = STRIPE_PRICE_IDS[plan];
+  const priceId = priceIds[plan];
   if (!priceId) {
     return NextResponse.json({ error: "Stripe price not configured for this plan." }, { status: 500 });
   }
+
+  const successUrl = `${APP_URL}/${locale}/thank-you?gateway=stripe&session_id={CHECKOUT_SESSION_ID}`;
+  const cancelUrl  = `${APP_URL}/${locale}/checkout?plan=${plan}&error=1`;
+
+  console.log("[checkout] APP_URL:", APP_URL);
+  console.log("[checkout] priceId:", priceId);
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -40,14 +54,16 @@ export async function POST(request: NextRequest) {
       line_items: [{ price: priceId, quantity: 1 }],
       customer_email: email,
       metadata: { plan, email },
-      success_url: `${APP_URL}/${locale}/thank-you?gateway=stripe&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${APP_URL}/${locale}/checkout?plan=${plan}&error=1`,
+      success_url: successUrl,
+      cancel_url: cancelUrl,
     });
 
     return NextResponse.json({ url: session.url });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Checkout failed.";
     console.error("[checkout] Stripe error:", message);
+    console.error("[checkout] success_url was:", successUrl);
+    console.error("[checkout] cancel_url was:", cancelUrl);
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
