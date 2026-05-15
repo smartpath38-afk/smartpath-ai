@@ -64,12 +64,11 @@ export async function POST(request: NextRequest) {
       }
 
       case "invoice.payment_succeeded": {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const invoice = event.data.object as any;
+        const invoice = event.data.object as Stripe.Invoice;
         if (invoice.billing_reason !== "subscription_cycle") break;
 
-        const subscriptionId = (invoice.subscription ?? invoice.parent?.subscription_details?.subscription) as string | undefined;
-        const priceId = invoice.lines?.data?.[0]?.price?.id as string | undefined;
+        const subscriptionId = invoice.subscription as string;
+        const priceId = invoice.lines?.data?.[0]?.price?.id;
         const plan = priceId ? PRICE_TO_PLAN[priceId] : undefined;
 
         if (!subscriptionId || !plan) break;
@@ -96,8 +95,7 @@ export async function POST(request: NextRequest) {
       }
 
       case "customer.subscription.deleted": {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const subscription = event.data.object as any;
+        const subscription = event.data.object as Stripe.Subscription;
         await admin
           .from("subscriptions")
           .update({ status: "cancelled" })

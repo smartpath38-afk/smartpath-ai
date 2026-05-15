@@ -2,12 +2,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { PRICING_PLANS, type PlanName } from "@/types";
+import { PRICING_PLANS, type PlanName, type PlanDuration } from "@/types";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const DURATION_LABELS: Record<string, string> = {
-  monthly: "Monthly",
   "6m": "6 months",
   "1y": "1 year",
   "2y": "2 years",
@@ -25,7 +24,7 @@ export async function POST(request: NextRequest) {
     userId?: string;
     email?: string;
     plan: PlanName;
-    duration: string;
+    duration: PlanDuration;
   };
 
   if (!plan || !duration) {
@@ -64,7 +63,7 @@ export async function POST(request: NextRequest) {
 
   const planDef = PRICING_PLANS.find((p) => p.id === plan);
   const planName = planDef?.name ?? plan;
-  const price = planDef?.monthlyPrice;
+  const price = planDef?.prices[duration];
   const durationLabel = DURATION_LABELS[duration] ?? duration;
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://smartpathavatar.online";
 
