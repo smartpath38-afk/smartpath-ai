@@ -1,12 +1,13 @@
-﻿// src/app/api/emails/purchase-confirmation/route.ts
+// src/app/api/emails/purchase-confirmation/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { PRICING_PLANS, type PlanName, type PlanDuration } from "@/types";
+import { PRICING_PLANS, type PlanName } from "@/types";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const DURATION_LABELS: Record<string, string> = {
+  monthly: "Monthly",
   "6m": "6 months",
   "1y": "1 year",
   "2y": "2 years",
@@ -24,7 +25,7 @@ export async function POST(request: NextRequest) {
     userId?: string;
     email?: string;
     plan: PlanName;
-    duration: PlanDuration;
+    duration: string;
   };
 
   if (!plan || !duration) {
@@ -48,12 +49,10 @@ export async function POST(request: NextRequest) {
       firstName = profile.full_name?.split(" ")[0] ?? "there";
     }
 
-    // If email matches userId but profile has no full_name, likely a newly created guest account
     if (!profile?.full_name) {
       isNewAccount = true;
     }
   } else if (directEmail) {
-    // Guest user — account was auto-created, they need to set a password
     isNewAccount = true;
   }
 
@@ -63,7 +62,7 @@ export async function POST(request: NextRequest) {
 
   const planDef = PRICING_PLANS.find((p) => p.id === plan);
   const planName = planDef?.name ?? plan;
-  const price = planDef?.prices[duration];
+  const price = planDef?.monthlyPrice;
   const durationLabel = DURATION_LABELS[duration] ?? duration;
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://smartpathavatar.online";
 
@@ -156,7 +155,6 @@ function buildEmailHtml({
           <tr>
             <td style="background:#141414;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:40px;">
 
-              <!-- Success icon -->
               <div style="text-align:center;margin-bottom:28px;">
                 <span style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:rgba(52,211,153,0.1);font-size:24px;">✓</span>
               </div>
@@ -168,7 +166,6 @@ function buildEmailHtml({
                 Hi ${firstName}, your purchase was successful.
               </p>
 
-              <!-- Plan details -->
               <table width="100%" cellpadding="0" cellspacing="0" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-bottom:28px;">
                 <tr>
                   <td style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
@@ -184,7 +181,7 @@ function buildEmailHtml({
                   <td style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
                     <table width="100%" cellpadding="0" cellspacing="0">
                       <tr>
-                        <td style="font-size:13px;color:rgba(255,255,255,0.4);">Access period</td>
+                        <td style="font-size:13px;color:rgba(255,255,255,0.4);">Billing</td>
                         <td style="text-align:right;font-size:13px;color:#ffffff;font-weight:500;">${durationLabel}</td>
                       </tr>
                     </table>
@@ -212,7 +209,6 @@ function buildEmailHtml({
                 </tr>
               </table>
 
-              <!-- CTA -->
               ${ctaBlock}
 
               <p style="margin:0;text-align:center;font-size:12px;color:rgba(255,255,255,0.2);">
