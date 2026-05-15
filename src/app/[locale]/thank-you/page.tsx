@@ -22,7 +22,7 @@ export default async function ThankYouPage({ params, searchParams }: Props) {
   }
 
   const gatewayLabel: Record<string, string> = {
-    paypal: "PayPal",
+    stripe: "Stripe",
   };
 
   const gwLabel = gateway ? (gatewayLabel[gateway] ?? gateway) : null;

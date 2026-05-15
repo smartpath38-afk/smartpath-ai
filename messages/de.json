@@ -37,23 +37,17 @@
     "fantasy": "Fantasy"
   },
   "pricing": {
-    "title": "Lizenz wählen",
-    "subtitle": "Jahresabonnement. Jederzeit kündbar. Keine versteckten Kosten.",
-    "monthly": "/ Mo. äquiv.",
+    "title": "Plan wählen",
+    "subtitle": "Monatliches Abonnement. Jederzeit kündbar. Keine versteckten Kosten.",
     "popular": "Beliebteste",
     "cta": "Jetzt starten",
-    "duration": {
-      "6m": "6 Monate",
-      "1y": "1 Jahr",
-      "2y": "2 Jahre",
-      "lifetime": "Lebenslang"
-    },
+    "perMonth": "/ Monat",
     "plans": {
-      "essential": {
-        "name": "Essential",
-        "renders": "150 KI-Generierungen pro Monat",
+      "starter": {
+        "name": "Starter",
+        "renders": "50 KI-Generierungen pro Monat",
         "features": [
-          "150 KI-Renders pro Monat",
+          "50 KI-Renders pro Monat",
           "Alle 8 Avatar-Stile",
           "HD-Downloads",
           "Persönliche Galerie",
@@ -61,21 +55,10 @@
         ]
       },
       "pro": {
-        "name": "Pro Studio",
-        "renders": "450 KI-Generierungen pro Monat",
+        "name": "Pro",
+        "renders": "200 KI-Generierungen pro Monat",
         "features": [
-          "450 KI-Renders pro Monat",
-          "Alle 8 Avatar-Stile",
-          "HD-Downloads",
-          "Persönliche Galerie",
-          "Prioritäts-Support"
-        ]
-      },
-      "business": {
-        "name": "Business Elite",
-        "renders": "1.500 KI-Generierungen pro Monat",
-        "features": [
-          "1.500 KI-Renders pro Monat",
+          "200 KI-Renders pro Monat",
           "Alle 8 Avatar-Stile",
           "HD-Downloads",
           "Persönliche Galerie",
@@ -83,11 +66,11 @@
           "Kommerzielle Lizenz"
         ]
       },
-      "infinity": {
-        "name": "Max Plan",
-        "renders": "3.000 KI-Generierungen pro Monat",
+      "enterprise": {
+        "name": "Enterprise",
+        "renders": "1.000 KI-Generierungen pro Monat",
         "features": [
-          "3.000 KI-Renders pro Monat",
+          "1.000 KI-Renders pro Monat",
           "Alle 8 Avatar-Stile",
           "HD-Downloads",
           "Persönliche Galerie",
@@ -135,7 +118,7 @@
     "title": "Kauf abschließen",
     "heading": "Bestellung abschließen",
     "orderSummary": "Bestellübersicht",
-    "oneTime": "/ Jahr",
+    "oneTime": "/ Monat",
     "emailLabel": "E-Mail-Adresse",
     "emailHint": "Ihre Zugangsdaten und die Details zu Ihrem Plan werden an diese Adresse gesendet.",
     "choosePayment": "Zahlungsmethode wählen",
@@ -153,13 +136,7 @@
     "errorEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
     "errorGeneric": "Ein Fehler ist aufgetreten.",
     "refundLink": "Rückerstattungsrichtlinie",
-    "businessLine": "SMARTPATH AI LLC · Kalispell, MT, USA",
-    "durations": {
-      "6m": "6 Monate Zugang",
-      "1y": "1-Jahres-Plan",
-      "2y": "2 Jahre Zugang",
-      "lifetime": "Lebenslanger Zugang"
-    }
+    "businessLine": "SMARTPATH AI LLC · Kalispell, MT, USA"
   },
   "thankyou": {
     "title": "Vielen Dank für Ihren Kauf",

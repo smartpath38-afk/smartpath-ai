@@ -1,34 +1,25 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { PRICING_PLANS, type PlanDuration } from "@/types";
+import { PRICING_PLANS } from "@/types";
 
 interface Props {
   locale: string;
 }
 
-const DURATIONS: { key: PlanDuration; labelKey: string }[] = [
-  { key: "6m", labelKey: "6m" },
-  { key: "1y", labelKey: "1y" },
-  { key: "2y", labelKey: "2y" },
-  { key: "lifetime", labelKey: "lifetime" },
-];
-
 export default function PricingPageClient({ locale }: Props) {
   const t = useTranslations("pricing");
-  const [activeDuration, setActiveDuration] = useState<PlanDuration>("1y");
 
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
 
       <main className="pt-32 pb-28 px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
             <motion.h1
@@ -48,32 +39,8 @@ export default function PricingPageClient({ locale }: Props) {
             </motion.p>
           </div>
 
-          {/* Duration switcher */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-            className="flex justify-center mb-12"
-          >
-            <div className="flex gap-1 p-1 rounded-xl bg-white/[0.05] border border-white/[0.07] flex-wrap justify-center">
-              {DURATIONS.map((d) => (
-                <button
-                  key={d.key}
-                  onClick={() => setActiveDuration(d.key)}
-                  className={`px-3 sm:px-5 py-2 rounded-lg text-sm font-medium transition-all ${
-                    activeDuration === d.key
-                      ? "bg-white text-black"
-                      : "text-white/50 hover:text-white"
-                  }`}
-                >
-                  {t(`duration.${d.labelKey}`)}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Pricing grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {PRICING_PLANS.map((plan, i) => (
               <motion.div
                 key={plan.id}
@@ -88,13 +55,11 @@ export default function PricingPageClient({ locale }: Props) {
               >
                 {plan.popular && (
                   <>
-                    {/* Mobile: inside the card */}
                     <div className="flex justify-center mb-4 sm:hidden">
                       <span className="px-4 py-1.5 rounded-full bg-white text-black text-xs font-semibold tracking-wide">
                         {t("popular")}
                       </span>
                     </div>
-                    {/* Tablet/Desktop: floating above the card */}
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 hidden sm:block">
                       <span className="px-4 py-1.5 rounded-full bg-white text-black text-xs font-semibold tracking-wide">
                         {t("popular")}
@@ -117,21 +82,16 @@ export default function PricingPageClient({ locale }: Props) {
                 <div className="mb-6">
                   <div className="flex items-end gap-1">
                     <span className="text-white text-4xl font-bold tracking-tight">
-                      ${plan.prices[activeDuration]}
+                      ${plan.monthlyPrice}
                     </span>
+                    <span className="text-white/30 text-sm mb-1.5">{t("perMonth")}</span>
                   </div>
-                  <p className="text-white/30 text-xs mt-1.5">
-                    {activeDuration !== "lifetime"
-                      ? `Annual plan · ${t(`duration.${activeDuration}`)}`
-                      : `Max plan · ${t("duration.lifetime")}`}
-                  </p>
+                  <p className="text-white/30 text-xs mt-1.5">Billed monthly · cancel anytime</p>
                 </div>
 
                 {/* Features */}
                 <ul className="space-y-2.5 mb-8 flex-1">
-                  {(
-                    t.raw(`plans.${plan.id}.features`) as string[]
-                  ).map((feature: string) => (
+                  {(t.raw(`plans.${plan.id}.features`) as string[]).map((feature: string) => (
                     <li key={feature} className="flex items-start gap-2.5">
                       <svg
                         className="w-4 h-4 text-white/40 flex-shrink-0 mt-0.5"
@@ -139,12 +99,7 @@ export default function PricingPageClient({ locale }: Props) {
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-white/60 text-sm">{feature}</span>
                     </li>
@@ -153,7 +108,7 @@ export default function PricingPageClient({ locale }: Props) {
 
                 {/* CTA */}
                 <Link
-                  href={`/${locale}/checkout?plan=${plan.id}&duration=${activeDuration}`}
+                  href={`/${locale}/checkout?plan=${plan.id}`}
                   className={`block text-center py-3 rounded-xl text-sm font-semibold transition-colors ${
                     plan.popular
                       ? "bg-white text-black hover:bg-white/90"
@@ -186,10 +141,11 @@ export default function PricingPageClient({ locale }: Props) {
               Cancel Anytime
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              {/* Stripe logo mark */}
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/>
               </svg>
-              PayPal
+              Powered by Stripe
             </div>
           </motion.div>
         </div>

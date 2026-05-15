@@ -37,19 +37,13 @@
     "fantasy": "Fantasy"
   },
   "pricing": {
-    "title": "Choose Your License",
-    "subtitle": "Annual subscription. Cancel anytime. No hidden fees.",
-    "monthly": "/ mo equiv.",
+    "title": "Choose Your Plan",
+    "subtitle": "Monthly subscription. Cancel anytime. No hidden fees.",
     "popular": "Most Popular",
     "cta": "Get Started",
-    "duration": {
-      "6m": "6 Months",
-      "1y": "1 Year",
-      "2y": "2 Years",
-      "lifetime": "Max"
-    },
+    "perMonth": "/ month",
     "plans": {
-      "essential": {
+      "starter": {
         "name": "Starter",
         "renders": "50 AI Generations per month",
         "features": [
@@ -61,21 +55,10 @@
         ]
       },
       "pro": {
-        "name": "Essential",
-        "renders": "150 AI Generations per month",
+        "name": "Pro",
+        "renders": "200 AI Generations per month",
         "features": [
-          "150 AI renders per month",
-          "All 8 avatar styles",
-          "HD downloads",
-          "Personal gallery",
-          "Email support"
-        ]
-      },
-      "business": {
-        "name": "Pro Studio",
-        "renders": "500 AI Generations per month",
-        "features": [
-          "500 AI renders per month",
+          "200 AI renders per month",
           "All 8 avatar styles",
           "HD downloads",
           "Personal gallery",
@@ -83,11 +66,11 @@
           "Commercial license"
         ]
       },
-      "infinity": {
-        "name": "Business",
-        "renders": "2,000 AI Generations per month",
+      "enterprise": {
+        "name": "Enterprise",
+        "renders": "1,000 AI Generations per month",
         "features": [
-          "2,000 AI renders per month",
+          "1,000 AI renders per month",
           "All 8 avatar styles",
           "HD downloads",
           "Personal gallery",
@@ -135,7 +118,7 @@
     "title": "Complete Your Purchase",
     "heading": "Complete Your Order",
     "orderSummary": "Order Summary",
-    "oneTime": "/ year",
+    "oneTime": "/ month",
     "emailLabel": "Email address",
     "emailHint": "Your login details and plan information will be sent to this address.",
     "choosePayment": "Choose Payment Method",
@@ -153,13 +136,7 @@
     "errorEmail": "Please enter a valid email address.",
     "errorGeneric": "An error occurred.",
     "refundLink": "Refund Policy",
-    "businessLine": "SMARTPATH AI LLC · Kalispell, MT, United States",
-    "durations": {
-      "6m": "6-Month Access",
-      "1y": "1-Year Plan",
-      "2y": "2-Year Access",
-      "lifetime": "Max Access"
-    }
+    "businessLine": "SMARTPATH AI LLC · Kalispell, MT, United States"
   },
   "thankyou": {
     "title": "Thank You for Your Purchase",
