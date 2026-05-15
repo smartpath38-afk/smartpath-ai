@@ -31,14 +31,18 @@ export async function POST(request: NextRequest) {
   const admin = createAdminClient();
 
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const obj = event.data.object as any;
+
     switch (event.type) {
       case "checkout.session.completed": {
-        const session = event.data.object as Stripe.Checkout.Session;
-        if (session.mode !== "subscription") break;
+        if (obj.mode !== "subscription") break;
 
-        const email = session.customer_details?.email ?? (session.metadata?.email as string);
-        const plan = session.metadata?.plan as PlanName | undefined;
-        const subscriptionId = session.subscription as string;
+        const customerDetails = obj.customer_details as Record<string, string> | null;
+        const metadata = obj.metadata as Record<string, string> | null;
+        const email = customerDetails?.email ?? metadata?.email;
+        const plan = metadata?.plan as PlanName | undefined;
+        const subscriptionId = obj.subscription as string | undefined;
 
         if (!email || !plan || !subscriptionId) {
           console.error("[webhook/stripe] Missing session data", { email, plan, subscriptionId });
@@ -64,11 +68,12 @@ export async function POST(request: NextRequest) {
       }
 
       case "invoice.payment_succeeded": {
-        const invoice = event.data.object as Stripe.Invoice;
-        if (invoice.billing_reason !== "subscription_cycle") break;
+        const billingReason = obj.billing_reason as string | undefined;
+        if (billingReason !== "subscription_cycle") break;
 
-        const subscriptionId = invoice.subscription as string;
-        const priceId = invoice.lines?.data?.[0]?.price?.id;
+        const subscriptionId = (obj.subscription ?? (obj.parent as Record<string, unknown> | undefined)?.subscription) as string | undefined;
+        const lines = obj.lines as { data: { price?: { id?: string } }[] } | undefined;
+        const priceId = lines?.data?.[0]?.price?.id;
         const plan = priceId ? PRICE_TO_PLAN[priceId] : undefined;
 
         if (!subscriptionId || !plan) break;
@@ -95,11 +100,11 @@ export async function POST(request: NextRequest) {
       }
 
       case "customer.subscription.deleted": {
-        const subscription = event.data.object as Stripe.Subscription;
+        const subscriptionId = obj.id as string;
         await admin
           .from("subscriptions")
           .update({ status: "cancelled" })
-          .eq("gateway_payment_id", subscription.id)
+          .eq("gateway_payment_id", subscriptionId)
           .eq("gateway", "stripe");
         break;
       }

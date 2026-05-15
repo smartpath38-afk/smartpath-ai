@@ -44,8 +44,7 @@ export default function PricingPreviewSection({ locale }: Props) {
           </motion.p>
         </div>
 
-        {/* Show 1y price as preview */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
           {PRICING_PLANS.map((plan, i) => (
             <motion.div
               key={plan.id}
@@ -87,12 +86,13 @@ export default function PricingPreviewSection({ locale }: Props) {
 
               <div className="mb-6">
                 <span className="text-white text-3xl font-bold">
-                  ${plan.prices["1y"]}
+                  ${plan.monthlyPrice}
                 </span>
+                <span className="text-white/30 text-sm ml-1">/ mo</span>
               </div>
 
               <Link
-                href={`/${locale}/checkout?plan=${plan.id}&duration=1y`}
+                href={`/${locale}/checkout?plan=${plan.id}`}
                 className={`mt-auto block text-center py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   plan.popular
                     ? "bg-white text-black hover:bg-white/90"
