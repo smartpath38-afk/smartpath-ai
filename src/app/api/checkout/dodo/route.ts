@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   const returnUrl = `${APP_URL}/${locale}/thank-you?gateway=dodo`;
 
   try {
-    const res = await fetch("https://api.dodopayments.com/subscriptions", {
+    const res = await fetch("https://test.dodopayments.com/checkouts", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -46,10 +46,8 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify({
         customer: { email, name: email.split("@")[0] },
-        product_id: productId,
-        payment_link: true,
+        product_cart: [{ product_id: productId, quantity: 1 }],
         return_url: returnUrl,
-        quantity: 1,
         metadata: { plan, email },
       }),
     });
@@ -60,12 +58,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Dodo checkout failed." }, { status: 502 });
     }
 
-    const data = await res.json() as { payment_link?: string };
-    if (!data.payment_link) {
-      return NextResponse.json({ error: "No payment link returned." }, { status: 502 });
+    const data = await res.json() as { checkout_url?: string };
+    if (!data.checkout_url) {
+      return NextResponse.json({ error: "No checkout URL returned." }, { status: 502 });
     }
 
-    return NextResponse.json({ url: data.payment_link });
+    return NextResponse.json({ url: data.checkout_url });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Checkout failed.";
     console.error("[checkout/dodo] error:", message);
