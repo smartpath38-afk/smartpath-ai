@@ -36,7 +36,9 @@ export default function CheckoutClient({
   const t = useTranslations("checkout");
 
   const [email, setEmail] = useState(prefillEmail);
-  const [loading, setLoading] = useState(false);
+  const [loadingStripe, setLoadingStripe] = useState(false);
+  const [loadingDodo, setLoadingDodo] = useState(false);
+  const loading = loadingStripe || loadingDodo;
   const [errorMsg, setErrorMsg] = useState<string | null>(
     hasError ? t("errorCancelled") : null
   );
@@ -53,7 +55,7 @@ export default function CheckoutClient({
   async function handleStripe() {
     const trimmedEmail = validateEmail();
     if (!trimmedEmail) return;
-    setLoading(true);
+    setLoadingStripe(true);
     setErrorMsg(null);
     try {
       const res = await fetch("/api/checkout", {
@@ -66,7 +68,27 @@ export default function CheckoutClient({
       window.location.href = data.url;
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : t("errorGeneric"));
-      setLoading(false);
+      setLoadingStripe(false);
+    }
+  }
+
+  async function handleDodo() {
+    const trimmedEmail = validateEmail();
+    if (!trimmedEmail) return;
+    setLoadingDodo(true);
+    setErrorMsg(null);
+    try {
+      const res = await fetch("/api/checkout/dodo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan: planId, email: trimmedEmail, locale }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error ?? "Failed to create Dodo checkout.");
+      window.location.href = data.url;
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : t("errorGeneric"));
+      setLoadingDodo(false);
     }
   }
 
@@ -168,16 +190,45 @@ export default function CheckoutClient({
                        transition-colors flex items-center justify-center gap-2.5
                        disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {loading ? (
+            {loadingStripe ? (
               <Spinner />
             ) : (
               <>
-                {/* Stripe lock icon */}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
                 Pay securely with Stripe
+              </>
+            )}
+          </button>
+
+          {/* Divider */}
+          <div className="flex items-center gap-3 my-3">
+            <div className="flex-1 h-px bg-white/[0.07]" />
+            <span className="text-white/20 text-[11px]">or</span>
+            <div className="flex-1 h-px bg-white/[0.07]" />
+          </div>
+
+          {/* Pay with Dodo button */}
+          <button
+            onClick={handleDodo}
+            disabled={loading}
+            className="w-full py-3.5 rounded-2xl font-semibold text-sm
+                       bg-[#1a1a2e] hover:bg-[#16213e] text-white
+                       border border-white/[0.12] hover:border-white/[0.2]
+                       transition-colors flex items-center justify-center gap-2.5
+                       disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {loadingDodo ? (
+              <Spinner />
+            ) : (
+              <>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+                Pay with Dodo Payments
               </>
             )}
           </button>

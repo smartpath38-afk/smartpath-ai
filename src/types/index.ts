@@ -4,7 +4,7 @@ export type PlanName = "starter" | "pro" | "enterprise";
 export type PlanDuration = "monthly";
 export type SubscriptionStatus = "active" | "expired" | "cancelled";
 export type RenderStatus = "processing" | "completed" | "failed";
-export type Gateway = "stripe";
+export type Gateway = "stripe" | "dodo";
 
 export type AvatarStyle =
   | "cartoon_3d"

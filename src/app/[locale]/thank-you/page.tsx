@@ -16,7 +16,7 @@ export default async function ThankYouPage({ params, searchParams }: Props) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const gatewayLabel: Record<string, string> = { stripe: "Stripe" };
+  const gatewayLabel: Record<string, string> = { stripe: "Stripe", dodo: "Dodo Payments" };
   const gwLabel = gateway ? (gatewayLabel[gateway] ?? gateway) : null;
 
   return (
