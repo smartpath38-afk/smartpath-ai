@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   const returnUrl = `${APP_URL}/${locale}/thank-you?gateway=dodo`;
 
   try {
-    const res = await fetch("https://test.dodopayments.com/checkouts", {
+    const res = await fetch("https://live.dodopayments.com/checkouts", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
